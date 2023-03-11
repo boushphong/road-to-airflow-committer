@@ -33,12 +33,12 @@ ENABLE_DELETE = True
 DATABASE_OBJECTS = []
 
 
-def __deepcopy__(self, memo):
-    memo[id(self)] = self
-    return self
+# def __deepcopy__(self, memo):
+#     memo[id(self)] = self
+#     return self
 
 
-PythonOperator.__deepcopy__ = __deepcopy__
+# PythonOperator.__deepcopy__ = __deepcopy__
 
 
 def add_database_object(
