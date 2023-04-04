@@ -4,6 +4,7 @@ import logging
 from datetime import datetime
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
+import pendulum
 
 
 def print_cwd():
@@ -13,10 +14,10 @@ def print_cwd():
 
 
 default_args = {
-    'start_date': datetime(2020, 1, 1)
+    'start_date': pendulum.today()
 }
 
-with DAG('print_cwd', schedule=None, catchup=False, default_args=default_args) as dag:
+with DAG('print_cwd_scheduled_2', schedule='* * * * *', catchup=False, default_args=default_args) as dag:
     bash = BashOperator(
         task_id='bash_operator',
         bash_command='pwd'

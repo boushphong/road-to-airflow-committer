@@ -13,10 +13,10 @@ def print_cwd():
 
 
 default_args = {
-    'start_date': datetime(2020, 1, 1)
+    'start_date': datetime(9999, 1, 1)
 }
 
-with DAG('print_cwd', schedule=None, catchup=False, default_args=default_args) as dag:
+with DAG('print_cwd_scheduled_1', schedule=None, catchup=False, default_args=default_args) as dag:
     bash = BashOperator(
         task_id='bash_operator',
         bash_command='pwd'
