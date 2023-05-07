@@ -9,3 +9,7 @@ export AIRFLOW__DATABASE__SQL_ALCHEMY_SCHEMA="airflow_db"
 
 # set global sql_mode = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 mysql --user=root --password=phong123 --host=localhost --port=3306 -D airflow_db -e "set global sql_mode = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'"
+
+# airflow db init
+
+# airflow users create -u admin -p admin -r Admin -e admin@admin.com -f Phong -l Bui
