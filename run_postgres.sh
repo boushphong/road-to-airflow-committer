@@ -12,3 +12,7 @@ sleep 5
 airflow db init
 
 airflow users create -u admin -p admin -r Admin -e admin@admin.com -f Phong -l Bui
+
+echo $AIRFLOW_HOME
+echo $AIRFLOW__DATABASE__SQL_ALCHEMY_CONN
+echo $AIRFLOW__DATABASE__SQL_ALCHEMY_SCHEMA
