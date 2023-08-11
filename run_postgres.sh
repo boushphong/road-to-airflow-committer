@@ -7,7 +7,7 @@ export AIRFLOW_HOME="$(pwd)/airflow"
 export AIRFLOW__DATABASE__SQL_ALCHEMY_CONN="postgresql+psycopg2://postgres:postgres@localhost:5432/airflow_db"
 export AIRFLOW__DATABASE__SQL_ALCHEMY_SCHEMA="public"
 
-sleep 5
+sleep 2
 
 airflow db init
 
