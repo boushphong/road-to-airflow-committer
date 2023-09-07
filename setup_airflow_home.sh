@@ -1,3 +1,5 @@
+# airflow config list --defaults > "${AIRFLOW_HOME}/airflow.cfg"
+# https://airflow.apache.org/docs/apache-airflow/stable/howto/set-config.html
 read -p "Enter the folder path (leave empty for default '$(pwd)'): " new_folder
 new_folder="${new_folder:-$(pwd)}"
 
