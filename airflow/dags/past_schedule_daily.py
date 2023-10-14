@@ -5,7 +5,7 @@ from pendulum import today
 
 dag = DAG(
     "past_schedule_daily",
-    start_date=today() + timedelta(days=-5),
+    start_date=today() - timedelta(days=5),
     schedule="0 0 * * *",
     catchup=True,
 )

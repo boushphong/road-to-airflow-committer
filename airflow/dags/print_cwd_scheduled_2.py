@@ -1,7 +1,6 @@
 from airflow import DAG
 import os
 import logging
-from datetime import datetime
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
 import pendulum
