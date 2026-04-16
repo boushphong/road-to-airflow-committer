@@ -9,10 +9,7 @@ export AIRFLOW__DATABASE__SQL_ALCHEMY_SCHEMA="public"
 
 sleep 4
 
-airflow db init
+airflow db migrate
 
-airflow users create -u admin -p admin -r Admin -e admin@admin.com -f Phong -l Bui
-
-echo $AIRFLOW_HOME
-echo $AIRFLOW__DATABASE__SQL_ALCHEMY_CONN
-echo $AIRFLOW__DATABASE__SQL_ALCHEMY_SCHEMA
+echo "Jetbrains Environments"
+echo "AIRFLOW_HOME=$AIRFLOW_HOME;AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=$AIRFLOW__DATABASE__SQL_ALCHEMY_CONN;AIRFLOW__DATABASE__SQL_ALCHEMY_SCHEMA=$AIRFLOW__DATABASE__SQL_ALCHEMY_SCHEMA"

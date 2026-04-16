@@ -1,26 +1,33 @@
-from airflow import DAG
-import os
+from __future__ import annotations
+
 import logging
-from datetime import datetime
-from airflow.operators.bash import BashOperator
-from airflow.operators.python import PythonOperator
+import os
+from datetime import datetime, timezone
+
+from airflow import DAG
+from airflow.providers.standard.operators.bash import BashOperator
+from airflow.providers.standard.operators.python import PythonOperator
 
 
-def print_cwd():
-    e = os.getenv("AIRFLOW_CONN_AIRFLOW_DB")
-    logging.info(e)
-    print(os.getcwd())
+def _print_cwd():
+    logging.info("AIRFLOW_CONN_AIRFLOW_DB=%s", os.getenv("AIRFLOW_CONN_AIRFLOW_DB"))
+    logging.info("cwd=%s", os.getcwd())
 
 
-default_args = {"start_date": datetime(2020, 1, 1)}
-
-with DAG("print_cwd", schedule=None, catchup=False, default_args=default_args) as dag:
-    bash = BashOperator(task_id="bash_operator", bash_command="pwd")
-
-    pwd = PythonOperator(
-        task_id="print_current_working_directory", python_callable=print_cwd
+with DAG(
+    dag_id="print_cwd",
+    schedule=None,
+    start_date=datetime(2024, 1, 1, tzinfo=timezone.utc),
+    catchup=False
+) as dag:
+    echo = BashOperator(
+        task_id="echo",
+        bash_command="echo 'hello from airflow 3' && pwd",
     )
 
-    sleep = BashOperator(task_id="sleep", bash_command="sleep 3")
+    print_current_working_directory = PythonOperator(
+        task_id="print_current_working_directory",
+        python_callable=_print_cwd,
+    )
 
-    bash >> pwd >> sleep
+    echo >> print_current_working_directory
